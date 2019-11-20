@@ -46,10 +46,9 @@ $(document).ready(function(){
           var attributo;
             // console.log("attr: "+attributo);
 
-
-
           i++;
         }
+        
         for (var j = 0; j < respo.length; j++) {
           var festivita = respo[j].date;
           var tipoFesta = respo[j].name;
