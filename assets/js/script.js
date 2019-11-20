@@ -12,7 +12,7 @@ $(document).ready(function(){
       method:'GET',
       success: function(feste){
         var respo = feste.response;
-        // console.log(respo);
+        console.log(respo);
 
         var giorniGenn2018 = moment("2018-01","YYYY-MM").daysInMonth();
         // console.log(giorniGenn2018);
@@ -44,21 +44,24 @@ $(document).ready(function(){
           $("#elencoGiorni").append("<li date-day='2018-01-"+ giorno +"'>"+i+" "+giornoSett+" "+mese+"</li>");
 
           var attributo;
-          $("#elencoGiorni li").each(function(){
-            attributo = $(this).attr("date-day");
-            console.log("attr: "+attributo);
-            for (var j = 0; j < respo.length; j++) {
-              var festivita = respo[j].date;
-              console.log("ogg "+festivita);
-              if (attributo === festivita) {
-                console.log("festa");
-                $(this).addClass("red");
-              }
-            }
+            // console.log("attr: "+attributo);
 
-          })
+
 
           i++;
+        }
+        for (var j = 0; j < respo.length; j++) {
+          var festivita = respo[j].date;
+          var tipoFesta = respo[j].name;
+          $("#elencoGiorni li").each(function(){
+            attributo = $(this).attr("date-day");
+            // console.log("ogg "+festivita);
+            if (attributo === festivita) {
+              // console.log("festa");
+              $(this).addClass("red");
+              $(this).append("<span> "+tipoFesta+"</span>")
+            }
+          })
         }
       },
       error:function(){
