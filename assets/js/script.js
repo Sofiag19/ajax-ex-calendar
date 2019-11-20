@@ -22,7 +22,6 @@ $(document).ready(function(){
         var mese = moment().month(0).format("MMMM");
         // console.log(mese);
 
-        var data;
         var giorno;
         var i = 1;
 
@@ -41,27 +40,37 @@ $(document).ready(function(){
 
           var giornoSett = moment("2018-01-"+giorno,"YYYY-MM-DD").format("dddd");
 
-          $("#elencoGiorni").append("<li date-day='2018-01-"+ giorno +"'>"+i+" "+giornoSett+" "+mese+"</li>");
-
-          var attributo;
-            // console.log("attr: "+attributo);
+          $("#elencoGiorni").append("<li date-day='"+ date +"'>"+i+" "+giornoSett+" "+mese+"</li>");
 
           i++;
         }
-        
+
         for (var j = 0; j < respo.length; j++) {
+
           var festivita = respo[j].date;
+          // console.log("ogg "+festivita);
+
           var tipoFesta = respo[j].name;
+
+          var attributo;
+
           $("#elencoGiorni li").each(function(){
+
             attributo = $(this).attr("date-day");
-            // console.log("ogg "+festivita);
+            // console.log("attr: "+attributo);
+
             if (attributo === festivita) {
               // console.log("festa");
               $(this).addClass("red");
+
               $(this).append("<span> "+tipoFesta+"</span>")
+
             }
+
           })
+
         }
+        
       },
       error:function(){
         alert("Si è verificato un errore")
