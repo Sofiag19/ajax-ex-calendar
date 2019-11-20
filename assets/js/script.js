@@ -17,6 +17,8 @@ $(document).ready(function(){
         var giorniGenn2018 = moment("2018-01","YYYY-MM").daysInMonth();
         // console.log(giorniGenn2018);
 
+        var giornoSett = moment().month(0).format("dddd");
+
         var mese = moment().month(0).format("MMMM");
         // console.log(mese);
 
@@ -25,7 +27,7 @@ $(document).ready(function(){
         var i = 1;
 
         while (i <= giorniGenn2018) {
-          
+
           if (i<10) {
             giorno= "0"+i;
             // console.log(giorno);
@@ -36,21 +38,22 @@ $(document).ready(function(){
 
           var date = "2018-01-"+giorno;
           // console.log(date);
-          $("#elencoGiorni").append("<li date-day='2018-01-"+ giorno +"'>"+i+" "+mese+"</li>");
+
+          var giornoSett = moment("2018-01-"+giorno,"YYYY-MM-DD").format("dddd");
+
+          $("#elencoGiorni").append("<li date-day='2018-01-"+ giorno +"'>"+i+" "+giornoSett+" "+mese+"</li>");
 
           var attributo;
           $("#elencoGiorni li").each(function(){
             attributo = $(this).attr("date-day");
-            // console.log("attr: "+attributo);
+            console.log("attr: "+attributo);
             for (var j = 0; j < respo.length; j++) {
               var festivita = respo[j].date;
-              // console.log(festivita);
-            }
-            if (attributo === festivita) {
-              console.log("festa");
-              $(this).addClass("red");
-            } else {
-              console.log("non festivo");
+              console.log("ogg "+festivita);
+              if (attributo === festivita) {
+                console.log("festa");
+                $(this).addClass("red");
+              }
             }
 
           })
