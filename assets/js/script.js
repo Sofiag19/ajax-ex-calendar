@@ -38,7 +38,7 @@ $(document).ready(function(){
       data: {month : month-1},
       success: function(feste){
         var respo = feste.response;
-        console.log(respo);
+        // console.log(respo);
 
         // ciclo per estrazione e comparazione con giorni festivi
         for (var j = 0; j < respo.length; j++) {
@@ -54,7 +54,7 @@ $(document).ready(function(){
           if (giornoFesta) {
             giornoFesta.addClass("red").append(" "+tipoFesta);
           }
-          console.log(giornoFesta);
+          // console.log(giornoFesta);
 
         }
 
@@ -70,13 +70,13 @@ $(document).ready(function(){
 
   $(".prima").click(function(){
 
-    ggMese(month--);
+    ggMese();
 
   })
 
   $(".dopo").click(function(){
 
-    ggMese(month++);
+    ggMese();
 
   })
 
