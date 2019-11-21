@@ -7,75 +7,60 @@
 
 $(document).ready(function(){
 
-  $.ajax({
-      url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
-      method:'GET',
-      success: function(feste){
-        var respo = feste.response;
-        console.log(respo);
+    // quanti giorni nel mese
+    var giorniGenn2018 = moment("2018-01","YYYY-MM").daysInMonth();
+    // console.log(giorniGenn2018);
 
-        // quanti giorni nel mese
-        var giorniGenn2018 = moment("2018-01","YYYY-MM").daysInMonth();
-        // console.log(giorniGenn2018);
+    // ciclo per stampare
+    var giorno;
+    var i = 1;
 
-        // ciclo per stampare
-        var giorno;
-        var i = 1;
+    while (i <= giorniGenn2018) {
 
-        while (i <= giorniGenn2018) {
+      // definizione data completa
+      var date = moment("2018-01-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
+      // console.log(date);
 
-          // definizione data completa
-          var date = moment("2018-01-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
-          // console.log(date);
+      // giorno della settimana relativo al giorno e nome mese
+      var giornoSettMese = moment(date).format("DD dddd MMMM");
+      // console.log(giornoSett);
 
-          // giorno della settimana relativo al giorno e nome mese
-          var giornoSettMese = moment(date).format("DD dddd MMMM");
-          // console.log(giornoSett);
+      // stampa elenco con nuovo attributo
+      $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSettMese+"</li>");
 
-          // stampa elenco con nuovo attributo
-          $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSettMese+"</li>");
+      i++;
+    }
 
-          i++;
-        }
+    $.ajax({
+        url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
+        method:'GET',
+        success: function(feste){
+          var respo = feste.response;
+          console.log(respo);
 
-        // ciclo per estrazione e comparazione con giorni festivi
-        for (var j = 0; j < respo.length; j++) {
+          // ciclo per estrazione e comparazione con giorni festivi
+          for (var j = 0; j < respo.length; j++) {
 
-          // estrapolazione giorno festivo
-          var festivita = respo[j].date;
-          // console.log("ogg: "+festivita);
+            // estrapolazione giorno festivo
+            var festivita = respo[j].date;
+            // console.log("ogg: "+festivita);
 
-          // estrapolazione nome giorno festivo
-          var tipoFesta = respo[j].name;
+            // estrapolazione nome giorno festivo
+            var tipoFesta = respo[j].name;
 
-          var attributo;
-
-          // ciclo per comparazione attributo con giorno festivo
-          $("#elencoGiorni li").each(function(){
-
-            attributo = $(this).attr("date-day");
-            // console.log("attr: "+attributo);
-
-            if (attributo === festivita) {
-              // console.log("festa");
-
-              // attribuzione festa-rosso
-              $(this).addClass("red");
-
-              // attribuzione nome festa
-              $(this).append("<span> "+tipoFesta+"</span>")
-
+            var giornoFesta = $("li[date-day='"+festivita+"']");
+            if (giornoFesta) {
+              giornoFesta.addClass("red").append(" "+tipoFesta);
             }
+            console.log(giornoFesta);
 
-          })
+          }
 
+        },
+        error:function(){
+          alert("Si è verificato un errore")
         }
-
-      },
-      error:function(){
-        alert("Si è verificato un errore")
-      }
-  })
+    })
 
 
 
