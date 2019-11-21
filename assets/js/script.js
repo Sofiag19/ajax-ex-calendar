@@ -18,39 +18,27 @@ $(document).ready(function(){
         var giorniGenn2018 = moment("2018-01","YYYY-MM").daysInMonth();
         // console.log(giorniGenn2018);
 
-        // nome del mese
-        var mese = moment().month(0).format("MMMM");
-        // console.log(mese);
-
         // ciclo per stampare
         var giorno;
         var i = 1;
 
         while (i <= giorniGenn2018) {
 
-          // modifica giorno per comparazione
-          if (i<10) {
-            giorno= "0"+i;
-            // console.log(giorno);
-          } else {
-            giorno = i;
-            // console.log(giorno);
-          }
-
           // definizione data completa
-          var date = "2018-01-"+giorno;
+          var date = moment("2018-01-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
           // console.log(date);
 
-          // giorno della settimana relativo al giorno
-          var giornoSett = moment("2018-01-"+giorno,"YYYY-MM-DD").format("dddd");
+          // giorno della settimana relativo al giorno e nome mese
+          var giornoSett = moment(date).format("DD dddd MMMM");
+          // console.log(giornoSett);
 
           // stampa elenco con nuovo attributo
-          $("#elencoGiorni").append("<li date-day='"+ date +"'>"+i+" "+giornoSett+" "+mese+"</li>");
+          $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSett+"</li>");
 
           i++;
         }
 
-        // ciclo per comparazione con giorni festivi
+        // ciclo per estrazione e comparazione con giorni festivi
         for (var j = 0; j < respo.length; j++) {
 
           // estrapolazione giorno festivo
