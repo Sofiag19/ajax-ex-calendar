@@ -1,3 +1,13 @@
 .red {
   color: red;
 }
+
+#wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+ul {
+  text-align: center;
+  list-style-type: none;
+}

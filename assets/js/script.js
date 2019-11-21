@@ -7,22 +7,23 @@
 
 $(document).ready(function(){
 
+  // fare una funzione che abbia come paramentro il numero del mese che parte da zero
+  function ggMese(month){
     // quanti giorni nel mese
-    var giorniGenn2018 = moment("2018-01","YYYY-MM").daysInMonth();
+    var giorniInMese = moment("2018-0"+month,"YYYY-MM").daysInMonth();
     // console.log(giorniGenn2018);
 
     // ciclo per stampare
-    var giorno;
     var i = 1;
 
-    while (i <= giorniGenn2018) {
+    while (i <= giorniInMese) {
 
       // definizione data completa
-      var date = moment("2018-01-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
+      var date = moment("2018-"+month+"-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
       // console.log(date);
 
       // giorno della settimana relativo al giorno e nome mese
-      var giornoSettMese = moment(date).format("DD dddd MMMM");
+      var giornoSettMese = moment(date).format("DD ddd MMMM");
       // console.log(giornoSett);
 
       // stampa elenco con nuovo attributo
@@ -32,37 +33,41 @@ $(document).ready(function(){
     }
 
     $.ajax({
-        url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
-        method:'GET',
-        success: function(feste){
-          var respo = feste.response;
-          console.log(respo);
+      url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018",
+      method:'GET',
+      data: {month : month-1},
+      success: function(feste){
+        var respo = feste.response;
+        console.log(respo);
 
-          // ciclo per estrazione e comparazione con giorni festivi
-          for (var j = 0; j < respo.length; j++) {
+        // ciclo per estrazione e comparazione con giorni festivi
+        for (var j = 0; j < respo.length; j++) {
 
-            // estrapolazione giorno festivo
-            var festivita = respo[j].date;
-            // console.log("ogg: "+festivita);
+          // estrapolazione giorno festivo
+          var festivita = respo[j].date;
+          // console.log("ogg: "+festivita);
 
-            // estrapolazione nome giorno festivo
-            var tipoFesta = respo[j].name;
+          // estrapolazione nome giorno festivo
+          var tipoFesta = respo[j].name;
 
-            var giornoFesta = $("li[date-day='"+festivita+"']");
-            if (giornoFesta) {
-              giornoFesta.addClass("red").append(" "+tipoFesta);
-            }
-            console.log(giornoFesta);
-
+          var giornoFesta = $("li[date-day='"+festivita+"']");
+          if (giornoFesta) {
+            giornoFesta.addClass("red").append(" "+tipoFesta);
           }
+          console.log(giornoFesta);
 
-        },
-        error:function(){
-          alert("Si è verificato un errore")
         }
+
+      },
+      error:function(){
+        alert("Si è verificato un errore")
+      }
     })
 
+  }
 
+  ggMese(12);
+  $("")
 
 
 
