@@ -66,19 +66,19 @@ $(document).ready(function(){
 
   }
 
-  ggMese(1);
+  ggMese(4);
 
-  $(".prima").click(function(){
-
-    ggMese();
-
-  })
-
-  $(".dopo").click(function(){
-
-    ggMese();
-
-  })
+  // $("#prima").click(function(){
+  //
+  //   ggMese(3);
+  //
+  // })
+  //
+  // $("#dopo").click(function(){
+  //
+  //   ggMese(5);
+  //
+  // })
 
 
 
