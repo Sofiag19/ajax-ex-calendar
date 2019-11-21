@@ -29,11 +29,11 @@ $(document).ready(function(){
           // console.log(date);
 
           // giorno della settimana relativo al giorno e nome mese
-          var giornoSett = moment(date).format("DD dddd MMMM");
+          var giornoSettMese = moment(date).format("DD dddd MMMM");
           // console.log(giornoSett);
 
           // stampa elenco con nuovo attributo
-          $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSett+"</li>");
+          $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSettMese+"</li>");
 
           i++;
         }
