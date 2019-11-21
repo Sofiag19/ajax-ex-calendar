@@ -5,80 +5,84 @@
 // Chiedere all’api quali sono le festività per il mese ;
 // Evidenziare le festività nella lista
 
-$(document).ready(function(){
 
-  // fare una funzione che abbia come paramentro il numero del mese che parte da zero
-  function ggMese(month){
-    // quanti giorni nel mese
-    var giorniInMese = moment("2018-0"+month,"YYYY-MM").daysInMonth();
-    // console.log(giorniGenn2018);
+var meseCorrente = 1;
+// fare una funzione che abbia come paramentro il numero del mese che parte da zero
 
-    // ciclo per stampare
-    var i = 1;
+function ggMese(month){
+  // quanti giorni nel mese
+  var giorniInMese = moment("2018-0"+month,"YYYY-MM").daysInMonth();
+  // console.log(giorniGenn2018);
 
-    while (i <= giorniInMese) {
+  // ciclo per stampare
+  var i = 1;
 
-      // definizione data completa
-      var date = moment("2018-"+month+"-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
-      // console.log(date);
+  while (i <= giorniInMese) {
 
-      // giorno della settimana relativo al giorno e nome mese
-      var giornoSettMese = moment(date).format("DD ddd MMMM");
-      // console.log(giornoSett);
+    // definizione data completa
+    var date = moment("2018-"+month+"-"+i, "YYYY-MM-D").format("YYYY-MM-DD");
+    // console.log(date);
 
-      // stampa elenco con nuovo attributo
-      $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSettMese+"</li>");
+    // giorno della settimana relativo al giorno e nome mese
+    var giornoSettMese = moment(date).format("DD ddd MMMM");
+    // console.log(giornoSett);
 
-      i++;
-    }
+    // stampa elenco con nuovo attributo
+    $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSettMese+"</li>");
 
-    $.ajax({
-      url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018",
-      method:'GET',
-      data: {month : month-1},
-      success: function(feste){
-        var respo = feste.response;
-        // console.log(respo);
-
-        // ciclo per estrazione e comparazione con giorni festivi
-        for (var j = 0; j < respo.length; j++) {
-
-          // estrapolazione giorno festivo
-          var festivita = respo[j].date;
-          // console.log("ogg: "+festivita);
-
-          // estrapolazione nome giorno festivo
-          var tipoFesta = respo[j].name;
-
-          var giornoFesta = $("li[date-day='"+festivita+"']");
-          if (giornoFesta) {
-            giornoFesta.addClass("red").append(" "+tipoFesta);
-          }
-          // console.log(giornoFesta);
-
-        }
-
-      },
-      error:function(){
-        alert("Si è verificato un errore")
-      }
-    })
-
+    i++;
   }
 
-  ggMese(4);
+  $.ajax({
+    url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018",
+    method:'GET',
+    data: {month : month-1},
+    success: function(feste){
+      var respo = feste.response;
+      // console.log(respo);
 
-  // $("#prima").click(function(){
-  //
-  //   ggMese(3);
-  //
-  // })
-  //
-  // $("#dopo").click(function(){
-  //
-  //   ggMese(5);
-  //
-  // })
+      // ciclo per estrazione e comparazione con giorni festivi
+      for (var j = 0; j < respo.length; j++) {
+
+        // estrapolazione giorno festivo
+        var festivita = respo[j].date;
+        // console.log("ogg: "+festivita);
+
+        // estrapolazione nome giorno festivo
+        var tipoFesta = respo[j].name;
+
+        var giornoFesta = $("li[date-day='"+festivita+"']");
+        if (giornoFesta) {
+          giornoFesta.addClass("red").append(" "+tipoFesta);
+        }
+        // console.log(giornoFesta);
+
+      }
+
+    },
+    error:function(){
+      alert("Si è verificato un errore")
+    }
+  })
+
+}
+$(document).ready(function(){
+
+
+  ggMese(meseCorrente);
+
+  $("#prima").click(function(){
+    meseCorrente--;
+    $("li[date-day]").remove();
+    ggMese(meseCorrente);
+  })
+
+  $("#dopo").click(function(){
+    meseCorrente++;
+    $("li[date-day]").remove();
+    ggMese(meseCorrente);
+
+  })
 
 
 
