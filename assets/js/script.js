@@ -72,15 +72,27 @@ $(document).ready(function(){
   ggMese(meseCorrente);
 
   $("#prima").click(function(){
-    meseCorrente--;
-    $("li[date-day]").remove();
-    ggMese(meseCorrente);
+    if (meseCorrente == 1) {
+      meseCorrente = 12;
+      $("li[date-day]").remove();
+      ggMese(meseCorrente);
+    }else {
+      meseCorrente--;
+      $("li[date-day]").remove();
+      ggMese(meseCorrente);
+    }
   })
 
   $("#dopo").click(function(){
-    meseCorrente++;
-    $("li[date-day]").remove();
-    ggMese(meseCorrente);
+    if (meseCorrente == 12) {
+      meseCorrente = 1;
+      $("li[date-day]").remove();
+      ggMese(meseCorrente);
+    } else {
+      meseCorrente++;
+      $("li[date-day]").remove();
+      ggMese(meseCorrente);
+    }
 
   })
 
