@@ -66,8 +66,19 @@ $(document).ready(function(){
 
   }
 
-  ggMese(12);
-  $("")
+  ggMese(1);
+
+  $(".prima").click(function(){
+
+    ggMese(month--);
+
+  })
+
+  $(".dopo").click(function(){
+
+    ggMese(month++);
+
+  })
 
 
 
