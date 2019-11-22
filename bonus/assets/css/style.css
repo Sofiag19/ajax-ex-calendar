@@ -9,6 +9,7 @@
 nav {
   display: flex;
   justify-content: space-around;
+  height: 50px;
 }
 
 .capitalize {
@@ -20,13 +21,14 @@ nav {
 .griglia-mese {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   /* height: 80vh; */
 }
 
 .cella-giorno {
   width: calc(100% / 7);
-  height: 100px;
+  height: 90px;
   border: 1px solid black;
   font-size: 12px;
   position: relative;
@@ -34,7 +36,7 @@ nav {
 
 .cella-vuota {
   width: calc(100% / 7);
-  height: 100px;
+  height: 90px;
   border: 1px solid grey;
 }
 
@@ -50,4 +52,36 @@ nav {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.notes {
+  display: none;
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 10;
+  background-color: white;
+}
+
+h3 {
+  color: blue;
+  width: 100%;
+  background-color: lightblue;
+  text-align: center;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  color: blue;
+  font-size: 17px;
+}
+
+.inputnotes {
+  width: 200px;
+  height: 80px;
 }

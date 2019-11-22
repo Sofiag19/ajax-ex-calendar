@@ -43,18 +43,18 @@ function ggMese(month){
 
     i++;
   }
-  
+
   // si parte dal lunedì
   var primoGg= $(".cella-giorno:first-of-type").attr("ggsett");
-  // console.log(primoGg);
-  for (var a = 1; a < 7; a++) {
-    if (primoGg == a) {
-      for (var b = 0; b < a; b++) {
-        $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-      }
-    }
+  for (var a = 0; a < primoGg; a++) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
   }
 
+  // celle vuote alla fine
+  var ultimoGG = $(".cella-giorno:last-of-type").attr("ggsett");
+  for (var d = 0; d < (6-ultimoGG); d++) {
+    $(".griglia-mese").append("<div class='cella-vuota'></div>");
+  }
 
   $.ajax({
     url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018",
@@ -122,6 +122,20 @@ $(document).ready(function(){
     }
 
   })
+
+
+  $(".griglia-mese").on("click",".cella-giorno", function(){
+    $(".notes").hide();
+    $(this).find(".notes").show();
+  });
+
+  $(".griglia-mese").on("click",".close",function() {
+    // $(this).parents(".notes")
+    console.log($(this).parents(".notes"));
+    // .css("display","none");
+    // parent(".notes")
+  });
+
 
 
 
