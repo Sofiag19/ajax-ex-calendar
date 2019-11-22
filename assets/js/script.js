@@ -11,8 +11,8 @@ var meseCorrente = 1;
 
 function ggMese(month){
   // quanti giorni nel mese
-  var giorniInMese = moment("2018-0"+month,"YYYY-MM").daysInMonth();
-  // console.log(giorniGenn2018);
+  var giorniInMese = moment("2018-"+month,"YYYY-MM").daysInMonth();
+  console.log(giorniInMese);
 
   // ciclo per stampare
   var i = 1;
