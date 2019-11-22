@@ -36,13 +36,6 @@ function ggMese(month){
       domenica.addClass("pink");
     }
 
-
-    // si parte dal lunedì
-    // var lunedi = $(".cella-giorno[ggsett='0']");
-    // console.log(lunedi);
-
-    // console.log($(".cella-giorno[ggsett]"));
-
     // stampa nome meseCorrente
     $("#mese").empty();
     var mese = moment("2018-"+month,"YYYY-MM").format("MMMM");
@@ -50,40 +43,16 @@ function ggMese(month){
 
     i++;
   }
+  
+  // si parte dal lunedì
   var primoGg= $(".cella-giorno:first-of-type").attr("ggsett");
   // console.log(primoGg);
-  if (primoGg == 1) {
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-  } else if (primoGg == 2) {
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-
-  }else if (primoGg == 3) {
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-
-  } else if (primoGg == 4) {
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-
-  }else if (primoGg == 5) {
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-
-  } else if (primoGg == 6) {
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
-
+  for (var a = 1; a < 7; a++) {
+    if (primoGg == a) {
+      for (var b = 0; b < a; b++) {
+        $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+      }
+    }
   }
 
 
