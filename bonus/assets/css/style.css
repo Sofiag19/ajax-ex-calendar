@@ -75,13 +75,22 @@ h3 {
 }
 .close {
   position: absolute;
-  top: 0;
-  right: 3px;
+  top: -15px;
+  right: -15px;
   color: blue;
   font-size: 17px;
+  z-index: 15;
 }
 
 .inputnotes {
   width: 200px;
   height: 80px;
+}
+
+.active {
+  display: block;
+}
+
+.disable {
+  display: none;
 }
