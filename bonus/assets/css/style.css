@@ -64,6 +64,7 @@ nav {
 
 .red {
   color: red;
+  background-color: pink;
 }
 
 .pink {
@@ -97,21 +98,18 @@ h3 {
   text-align: center;
 }
 
-.pink .notes h3, .pink .notes .close{
+.pink .notes h3,
+.pink .notes .close,
+.red .notes h3,
+.red .notes .close{
   background-color: pink;
   color: rgb(240, 77, 121);
 }
-.pink .notes, .pink .close {
+.pink .notes,
+.pink .close,
+.red .notes,
+.red .close {
   border: 1px solid pink;
-}
-
-.red .notes h3, .red .notes .close {
-  background-color: red;
-  color: white;
-}
-
-.red .notes, .red .close {
-  border: 1px solid red;
 }
 
 .close {
