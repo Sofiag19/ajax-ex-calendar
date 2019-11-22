@@ -1,14 +1,7 @@
-// Per oggi però “solo” MIlestone:
-// stampare gennaio 2018 (E SOLO QUELLO) con caratterizzazione delle relative festività, recuperate interrogando l’API
-//  STEP:
-// Controllare quanti giorni ha il mese  formando così una lista;
-// Chiedere all’api quali sono le festività per il mese ;
-// Evidenziare le festività nella lista
-
-
+// inizializzo il mese
 var meseCorrente = 1;
-// fare una funzione che abbia come paramentro il numero del mese che parte da zero
 
+// fare una funzione che abbia come paramentro il numero del mese che parte da zero(1)
 function ggMese(month){
   // quanti giorni nel mese
   var giorniInMese = moment("2018-"+month,"YYYY-MM").daysInMonth();
@@ -24,11 +17,23 @@ function ggMese(month){
     // console.log(date);
 
     // giorno della settimana relativo al giorno e nome mese
-    var giornoSettMese = moment(date).format("DD ddd MMMM");
+    var giornoSett = moment(date).format("DD ddd");
     // console.log(giornoSett);
-
     // stampa elenco con nuovo attributo
-    $("#elencoGiorni").append("<li date-day='"+ date +"'>"+giornoSettMese+"</li>");
+    var copiaTempl = $("#hb-cella").html();
+    var templReady = Handlebars.compile(copiaTempl);
+    var createObj = {printDate : giornoSett, attrday: date};
+    var createEl = templReady(createObj);
+    $(".griglia-mese").append(createEl);
+    var dayWeek = moment(date).format("e");
+    if (dayWeek == 0) {
+      $(".cella-giorno").addClass("pink");
+    }  
+
+    // stampa nome meseCorrente
+    $("#mese").empty();
+    var mese = moment("2018-"+month,"YYYY-MM").format("MMMM");
+    $("#mese").text(mese).addClass("capitalize");
 
     i++;
   }
@@ -74,11 +79,11 @@ $(document).ready(function(){
   $("#prima").click(function(){
     if (meseCorrente == 1) {
       meseCorrente = 12;
-      $("li[date-day]").remove();
+      $("div[date-day]").remove();
       ggMese(meseCorrente);
     }else {
       meseCorrente--;
-      $("li[date-day]").remove();
+      $("div[date-day]").remove();
       ggMese(meseCorrente);
     }
   })
@@ -86,11 +91,11 @@ $(document).ready(function(){
   $("#dopo").click(function(){
     if (meseCorrente == 12) {
       meseCorrente = 1;
-      $("li[date-day]").remove();
+      $("div[data-day]").remove();
       ggMese(meseCorrente);
     } else {
       meseCorrente++;
-      $("li[date-day]").remove();
+      $("div[data-day]").remove();
       ggMese(meseCorrente);
     }
 
