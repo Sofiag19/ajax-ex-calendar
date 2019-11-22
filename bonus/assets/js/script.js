@@ -7,9 +7,8 @@ function ggMese(month){
   var giorniInMese = moment("2018-"+month,"YYYY-MM").daysInMonth();
   // console.log(giorniInMese);
 
-  // ciclo per stampare
+  // ciclo per stampare in html
   var i = 1;
-
   while (i <= giorniInMese) {
 
     // definizione data completa
@@ -20,8 +19,9 @@ function ggMese(month){
     var giornoSett = moment(date).format("DD ddd");
     // console.log(giornoSett);
 
+    // giorno della settimana
     var dayWeek = moment(date).format("e");
-    console.log(dayWeek);
+    // console.log(dayWeek);
 
     // stampa elenco con nuovo attributo
     var copiaTempl = $("#hb-cella").html();
@@ -35,6 +35,11 @@ function ggMese(month){
     if (domenica){
       domenica.addClass("pink");
     }
+
+    // si parte del lunedì
+    var lunedi = $(".cella-giorno[ggsett='0']");
+    // console.log(lunedi);
+    
     // console.log($(".cella-giorno[ggsett]"));
 
     // stampa nome meseCorrente
@@ -64,12 +69,11 @@ function ggMese(month){
         var tipoFesta = respo[j].name;
 
         var giornoFesta = $(".cella-giorno[data-day='"+festivita+"']");
+        // console.log(giornoFesta);
         if (giornoFesta) {
           giornoFesta.addClass("red");
           giornoFesta.find(".festa").append(" "+tipoFesta);
         }
-        // console.log(giornoFesta);
-
       }
 
     },
@@ -87,11 +91,11 @@ $(document).ready(function(){
   $("#prima").click(function(){
     if (meseCorrente == 1) {
       meseCorrente = 12;
-      $("div[date-day]").remove();
+      $("div[data-day]").remove();
       ggMese(meseCorrente);
     }else {
       meseCorrente--;
-      $("div[date-day]").remove();
+      $("div[data-day]").remove();
       ggMese(meseCorrente);
     }
   })
