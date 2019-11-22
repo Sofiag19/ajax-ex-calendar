@@ -42,8 +42,8 @@ nav {
 .griglia-mese {
   display: flex;
   flex-wrap: wrap;
-  width: 88%;
-  margin: 0 auto;
+  width: 86%;
+  margin: 0 auto 50px;
 }
 
 .cella-giorno {
@@ -75,13 +75,15 @@ nav {
   position: absolute;
   bottom: 0;
   right: 0;
+  font-size: 16px;
+  font-weight: bolder;
 }
 
 .notes {
   display: none;
   width: 200px;
   height: 100px;
-  border: 1px solid lightblue;
+  border: 1px solid rgb(35, 110, 171);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -109,20 +111,20 @@ h3 {
 .pink .close,
 .red .notes,
 .red .close {
-  border: 1px solid pink;
+  border: 1px solid rgb(240, 77, 121);
 }
 
 .close {
   position: absolute;
-  top: -17px;
-  right: -17px;
+  top: -20px;
+  right: -20px;
   color: rgb(35, 110, 171);
   font-size: 17px;
-  z-index: 9;
+  z-index: -1;
   background-color: lightblue;
   padding: 5px 7px;
   border-radius: 5px;
-  border: 1px solid lightblue;
+  border: 1px solid rgb(35, 110, 171);
 }
 
 .inputnotes {
