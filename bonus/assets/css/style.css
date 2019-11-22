@@ -29,6 +29,7 @@ nav {
   height: 50px;
   border: 1px solid black;
   font-size: 12px;
+  position: relative;
 }
 
 .red {
@@ -37,4 +38,10 @@ nav {
 
 .pink {
   background-color: pink;
+}
+
+.festa {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

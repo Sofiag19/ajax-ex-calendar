@@ -19,16 +19,23 @@ function ggMese(month){
     // giorno della settimana relativo al giorno e nome mese
     var giornoSett = moment(date).format("DD ddd");
     // console.log(giornoSett);
+
+    var dayWeek = moment(date).format("e");
+    console.log(dayWeek);
+
     // stampa elenco con nuovo attributo
     var copiaTempl = $("#hb-cella").html();
     var templReady = Handlebars.compile(copiaTempl);
-    var createObj = {printDate : giornoSett, attrday: date};
+    var createObj = {printDate : giornoSett, attrday: date, ggsett: dayWeek };
     var createEl = templReady(createObj);
     $(".griglia-mese").append(createEl);
-    var dayWeek = moment(date).format("e");
-    if (dayWeek == 0) {
-      $(".cella-giorno").addClass("pink");
-    }  
+
+    // colorazione differente domenica
+    var domenica = $(".cella-giorno[ggsett='6']");
+    if (domenica){
+      domenica.addClass("pink");
+    }
+    // console.log($(".cella-giorno[ggsett]"));
 
     // stampa nome meseCorrente
     $("#mese").empty();
@@ -56,9 +63,10 @@ function ggMese(month){
         // estrapolazione nome giorno festivo
         var tipoFesta = respo[j].name;
 
-        var giornoFesta = $("li[date-day='"+festivita+"']");
+        var giornoFesta = $(".cella-giorno[data-day='"+festivita+"']");
         if (giornoFesta) {
-          giornoFesta.addClass("red").append(" "+tipoFesta);
+          giornoFesta.addClass("red");
+          giornoFesta.find(".festa").append(" "+tipoFesta);
         }
         // console.log(giornoFesta);
 
