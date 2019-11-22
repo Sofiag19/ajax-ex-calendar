@@ -129,9 +129,14 @@ $(document).ready(function(){
   });
 
   // non prende questo comando
-  $(".griglia-mese").on("click",".close", function(){
-    console.log("Close");
+  // $(".griglia-mese").on("click",".close", function(){
+  //   console.log("Close");
+  //   $(".notes").hide();
+  // })
+
+  $(".close").click(function(){
     $(".notes").hide();
+    console.log("Close");
   })
 
 
