@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: lightblue;
+}
 /* nav */
 nav {
   display: flex;
@@ -49,12 +52,14 @@ nav {
   border: 1px solid rgb(70, 70, 70);
   font-size: 12px;
   position: relative;
+  background-color: white;
 }
 
 .cella-vuota {
   width: calc(100% / 7);
   height: 90px;
   border: 1px solid grey;
+  background-color: rgb(230, 230, 230);
 }
 
 .red {

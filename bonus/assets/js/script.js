@@ -123,16 +123,16 @@ $(document).ready(function(){
 
   })
 
-
+  var nota = $(".notes");
   $(".griglia-mese").on("click",".cella-giorno", function(){
-    $(".notes").hide();
-    $(this).find(".notes").show();
+    nota.hide();
+    $(this).find(nota).show();
   });
 
   // non prende questo comando
   $(".griglia-mese").on("click",".close", function(){
     console.log("Close");
-    $("div.notes").hide();
+    nota.hide();
   })
 
 
