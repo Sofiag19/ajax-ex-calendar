@@ -36,10 +36,11 @@ function ggMese(month){
       domenica.addClass("pink");
     }
 
-    // si parte del lunedì
-    var lunedi = $(".cella-giorno[ggsett='0']");
+
+    // si parte dal lunedì
+    // var lunedi = $(".cella-giorno[ggsett='0']");
     // console.log(lunedi);
-    
+
     // console.log($(".cella-giorno[ggsett]"));
 
     // stampa nome meseCorrente
@@ -49,6 +50,42 @@ function ggMese(month){
 
     i++;
   }
+  var primoGg= $(".cella-giorno:first-of-type").attr("ggsett");
+  // console.log(primoGg);
+  if (primoGg == 1) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+  } else if (primoGg == 2) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+
+  }else if (primoGg == 3) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+
+  } else if (primoGg == 4) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+
+  }else if (primoGg == 5) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+
+  } else if (primoGg == 6) {
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+    $(".griglia-mese").prepend("<div class='cella-vuota'></div>");
+
+  }
+
 
   $.ajax({
     url:"https://flynn.boolean.careers/exercises/api/holidays?year=2018",
@@ -92,10 +129,12 @@ $(document).ready(function(){
     if (meseCorrente == 1) {
       meseCorrente = 12;
       $("div[data-day]").remove();
+      $("div.cella-vuota").remove();
       ggMese(meseCorrente);
     }else {
       meseCorrente--;
       $("div[data-day]").remove();
+      $("div.cella-vuota").remove();
       ggMese(meseCorrente);
     }
   })
@@ -104,10 +143,12 @@ $(document).ready(function(){
     if (meseCorrente == 12) {
       meseCorrente = 1;
       $("div[data-day]").remove();
+      $("div.cella-vuota").remove();
       ggMese(meseCorrente);
     } else {
       meseCorrente++;
       $("div[data-day]").remove();
+      $("div.cella-vuota").remove();
       ggMese(meseCorrente);
     }
 

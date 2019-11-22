@@ -32,6 +32,12 @@ nav {
   position: relative;
 }
 
+.cella-vuota {
+  width: calc(100% / 7);
+  height: 100px;
+  border: 1px solid grey;
+}
+
 .red {
   color: red;
 }
