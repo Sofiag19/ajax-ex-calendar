@@ -1,0 +1,40 @@
+/* general */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* nav */
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+/* griglia-mese */
+
+.griglia-mese {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  /* height: 80vh; */
+}
+
+.cella-giorno {
+  width: calc(100% / 7);
+  height: 50px;
+  border: 1px solid black;
+  font-size: 12px;
+}
+
+.red {
+  color: red;
+}
+
+.pink {
+  background-color: pink;
+}
