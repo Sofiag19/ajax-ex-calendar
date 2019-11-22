@@ -8,12 +8,30 @@
 /* nav */
 nav {
   display: flex;
-  justify-content: space-around;
-  height: 50px;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
 
 .capitalize {
   text-transform: capitalize;
+}
+
+#prima {
+  font-size: 50px;
+  color: rgb(35, 110, 171);
+}
+#mese {
+  flex-basis: 30%;
+  text-align: center;
+  font-size: 50px;
+  font-style: italic;
+  color: rgb(35, 110, 171);
+}
+
+#dopo {
+  font-size: 50px;
+  color: rgb(35, 110, 171);
 }
 
 /* griglia-mese */
@@ -21,15 +39,14 @@ nav {
 .griglia-mese {
   display: flex;
   flex-wrap: wrap;
-  width: 95%;
+  width: 88%;
   margin: 0 auto;
-  /* height: 80vh; */
 }
 
 .cella-giorno {
   width: calc(100% / 7);
   height: 90px;
-  border: 1px solid black;
+  border: 1px solid rgb(70, 70, 70);
   font-size: 12px;
   position: relative;
 }
@@ -58,33 +75,63 @@ nav {
   display: none;
   width: 200px;
   height: 100px;
-  border: 1px solid black;
+  border: 1px solid lightblue;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   z-index: 10;
   background-color: white;
+  border-radius: 5px;
 }
 
 h3 {
-  color: blue;
+  color: rgb(35, 110, 171);
   width: 100%;
   background-color: lightblue;
   text-align: center;
 }
+
+.pink .notes h3, .pink .notes .close{
+  background-color: pink;
+  color: rgb(240, 77, 121);
+}
+.pink .notes, .pink .close {
+  border: 1px solid pink;
+}
+
+.red .notes h3, .red .notes .close {
+  background-color: red;
+  color: white;
+}
+
+.red .notes, .red .close {
+  border: 1px solid red;
+}
+
 .close {
   position: absolute;
-  top: -15px;
-  right: -15px;
-  color: blue;
+  top: -17px;
+  right: -17px;
+  color: rgb(35, 110, 171);
   font-size: 17px;
-  z-index: 15;
+  z-index: 9;
+  background-color: lightblue;
+  padding: 5px 7px;
+  border-radius: 5px;
+  border: 1px solid lightblue;
 }
 
 .inputnotes {
-  width: 200px;
+  width: 197px;
   height: 80px;
+  margin: 0 1px;
+  border: 0;
+}
+
+.inputnotes:focus {
+  outline-color: transparent;
+  outline-style: none;
 }
 
 .active {

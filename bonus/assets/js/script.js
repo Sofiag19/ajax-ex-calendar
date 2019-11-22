@@ -125,14 +125,15 @@ $(document).ready(function(){
 
 
   $(".griglia-mese").on("click",".cella-giorno", function(){
-    $(".notes").addClass("disable");
-    $(this).find(".notes").addClass("active").removeClass("disable");
+    $(".notes").hide();
+    $(this).find(".notes").show();
   });
 
-  $(".griglia-mese").on("click",".close",function() {
-    // $(this).parent().hide();
-    $(this).parent(".notes").addClass("disable");
-  });
+  // non prende questo comando
+  $(".griglia-mese").on("click",".close", function(){
+    console.log("Close");
+    $("div.notes").hide();
+  })
 
 
 
