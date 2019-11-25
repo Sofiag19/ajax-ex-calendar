@@ -123,16 +123,21 @@ $(document).ready(function(){
 
   })
 
-  $(".griglia-mese").on("click",".cella-giorno", function(){
-    $(".notes").hide();
-    $(this).find(".notes").show();
-  });
+  // $(".griglia-mese").on("click",".cella-giorno", function(){
+  //   $(".notes").hide();
+  //   $(this).find(".notes").show();
+  // });
 
   // non prende questo comando
   // $(".griglia-mese").on("click",".close", function(){
   //   console.log("Close");
   //   $(".notes").hide();
   // })
+  $(".cella-giorno").click(function(){
+    $(".notes").hide();
+    $(this).find(".notes").show();
+    console.log("Close");
+  })
 
   $(".close").click(function(){
     $(".notes").hide();
