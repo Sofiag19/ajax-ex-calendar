@@ -120,31 +120,18 @@ $(document).ready(function(){
       $("div.cella-vuota").remove();
       ggMese(meseCorrente);
     }
-
   })
 
-  // $(".griglia-mese").on("click",".cella-giorno", function(){
-  //   $(".notes").hide();
-  //   $(this).find(".notes").show();
-  // });
+  $(document).on("click",".cella-giorno", function(){
+    var note = $(this).find(".notes");
 
-  // non prende questo comando
-  // $(".griglia-mese").on("click",".close", function(){
-  //   console.log("Close");
-  //   $(".notes").hide();
-  // })
-  $(".cella-giorno").click(function(){
-    $(".notes").hide();
-    $(this).find(".notes").show();
-    console.log("Close");
-  })
+    if(note.is(":visible")) {
+      $(".notes").hide();
+    } else {
+      $(".notes").hide();
+      $(this).find(".notes").show();
+    }
 
-  $(".close").click(function(){
-    $(".notes").hide();
-    console.log("Close");
-  })
-
-
-
+  });
 
 })
